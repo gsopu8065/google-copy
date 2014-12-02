@@ -1,6 +1,6 @@
 <div class="container" >
 
-<form role="form-horizontal">
+<form role="form-horizontal" ng-submit="searchWeb(query)">
     <div class="form-group">
 
         <div class="rightTop">
@@ -9,10 +9,11 @@
         <a href="" ng-click="videoSearch(query)">Video</a>
         </div>
       <br/>
-       <input class="form-control myText1" ng-model="query" type="text" placeholder="enter query" typeahead="name for name in autoCompleteItems($viewValue) | filter:$viewValue | limitTo:8" ng-submit="searchWeb(query)">
+       <input class="form-control myText1" ng-model="query" type="text" placeholder="enter query" typeahead="name for name in autoCompleteItems($viewValue) | filter:$viewValue | limitTo:8" >
+<input type="submit" id="submit" value="Submit" ng-show="false"/>
 		<br/>
     </div>
-</form>
+</form
 
   <!-- web section -->
  <section ng-show="googleWebResults">
