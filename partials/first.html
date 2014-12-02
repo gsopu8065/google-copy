@@ -1,0 +1,62 @@
+<div class="container" >
+
+<form role="form-horizontal">
+    <div class="form-group">
+
+        <div class="rightTop">
+        <a href="" ng-click="searchWeb(query)">Web</a>
+        <a href="" ng-click="imageSearch(query)">Image</a>
+        <a href="" ng-click="videoSearch(query)">Video</a>
+        </div>
+      <br/>
+       <input class="form-control myText1" ng-model="query" type="text" placeholder="enter query" typeahead="name for name in autoCompleteItems($viewValue) | filter:$viewValue | limitTo:8" ng-submit="searchWeb(query)">
+		<br/>
+    </div>
+</form>
+
+  <!-- web section -->
+ <section ng-show="googleWebResults">
+ 	 <div class="container">
+ 	 	<br/><hr/> 
+ 	 	<div class="divBlock" ng-repeat="webResult in googleWebResults">
+ 	 	 <b><a href="{{webResult.url}}">{{webResult.titleNoFormatting}} </a> </b> <br/>
+ 	 		{{webResult.url}}  <br/>
+ 	 		<span ng-bind-html="webResult.content"> </span>
+ 	 	</div> 
+ 	 	<br/> <br/> 	 	
+ 	 </div>
+ 	 <div class="footer">
+ 	 	<span ng-show="{{page!=1}}"> <b> <a href="">previous</a> </b> </span>
+ 	 	<span ng-repeat="page in [1,2,3,4,5]">
+ 	 		<a href="" ng-click="updatePage(page)">{{page}}</a> &nbsp; 
+ 	 	</span>
+ 	 </div>
+ 	 <br/>
+ </section>
+
+ 	<!-- image section -->
+  <section ng-show="googleImageResults">
+  	<div class="container imageGallary" endless-scroll="imageResult in googleImageResults">
+ 	 	 <img src="{{imageResult.unescapedUrl}}" class="img-thumbnail imgGallaryImage" width="200" height="200"></img>  	 
+ 	 </div>
+  </section>
+
+  	<!-- video search -->
+  <section ng-show="googleVideoResults">
+	<div class="container">
+ 	 	<br/><hr/> 
+ 	 	<div ng-repeat="videoResult in googleVideoResults" class="row videoGallary">
+ 	 	 	<div class="col-xs-3"> <a href="{{videoResult.url}}"> <img src="{{videoResult.tbUrl}}" width="90%" height="70%"></img></a> </div>
+ 	 	 	 <div class="col-xs-9">
+ 	 	 	 	<b> <a href="{{videoResult.url}}">{{videoResult.title}}</a> </b> <br/>
+ 	 	 	 	{{videoResult.published}} <br/>
+ 	 	 	 	{{videoResult.content}}
+ 	 	 	 </div>	
+ 	 	</div> 
+ 	 	<br/> <br/> 	 	
+ 	 </div>
+  </section>
+
+
+
+<div>

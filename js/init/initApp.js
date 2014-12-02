@@ -1,0 +1,1 @@
+var google = angular.module("google",['ui.bootstrap','ngRoute','ngSanitize','dc.endlessScroll']);
